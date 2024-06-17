@@ -1,5 +1,6 @@
 # from django.http import HttpResponse
 from django.shortcuts import render,redirect
+from visit.models import PageVisit
 # There are two ways to render Document in Django , one is throught the Django way and other way is through python way.
 # import pathlib # this is to deal with the Directory and File System
 # this_dir = pathlib.Path(__file__).resolve().parent # this will give the Directory of the Parent
@@ -12,8 +13,12 @@ from django.shortcuts import render,redirect
 #     return HttpResponse(html_)
 
 def index(request):
+    querey_set= PageVisit.objects.all()
+    page_count = querey_set.count()
     context = {
         "title": "Home Page",
+        "page_count" : page_count,
     }
     html_template = "saashome/home.html"
+    PageVisit.objects.create()
     return render(request,html_template,context)
