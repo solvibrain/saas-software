@@ -13,12 +13,16 @@ from visit.models import PageVisit
 #     return HttpResponse(html_)
 
 def index(request):
-    querey_set= PageVisit.objects.all()
-    page_count = querey_set.count()
+    qs = PageVisit.objects.all()
+    page_qs= PageVisit.objects.filter(path = request.path)
+    page_count = page_qs.count()
+    total_count = qs.count()
     context = {
         "title": "Home Page",
         "page_count" : page_count,
+        "total_count": total_count,
     }
+   
     html_template = "saashome/home.html"
-    PageVisit.objects.create()
+    PageVisit.objects.create(path = request.path)
     return render(request,html_template,context)
