@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> {% block title %}Document{% endblock title %} </title>
+    {% include "base/css.html" %} {% comment %}
+        We have kept code of CSS seperate at base/css.html , so that we can adopt DRY Principle and will be easy to manage it.
+    {% endcomment %}
 </head>
 <body>
+    {% include "nav/navbar.html" %}
     {% block body %}
     <p> This is Base Html File </p>
     {% endblock body %}
+    {% include "base/js.html" %} {% comment %}
+        We have kept the Js code seperate in base/js.html fie  and here we are including that 
+    {% endcomment %}
 </body>
 </html>
