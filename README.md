@@ -6,4 +6,15 @@ First Created Django Project using the convention that is for Django
 >
 > Creating .gitignore file and adding everyfile that we dont wana to push on github.
 > Then Creating DockerFile for the Production and adding raiwa.toml file for production
-> 
+
+
+
+
+
+
+
+
+### Structure of the Frontend Files , here Earlier we are using Flowbite (Third Party CDN) and Now Trying to manage CDN by own .
+ ##### For this Creating >src>>staticfiles in a root Directory of Project.
+
+ And then Storing those CSS and JS 

@@ -47,6 +47,8 @@ RUN pip install -r /tmp/requirements.txt
 # run any other commands that do not need the database
 # such as:
 # RUN python manage.py collectstatic --noinput
+# Here this Command will run and this wil push static file to the Destination Path
+# But befor to this We will Pull STatic file to Local and then aboe command will get Execute and for this we will make our own Custom Django Management Command.
 
 # set the Django default project name
 ARG PROJ_NAME="saashome"

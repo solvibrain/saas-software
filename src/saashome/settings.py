@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #my apps
     'visit',
+    #Custom Management command app
+    'commander',
+    
 ]
 
 MIDDLEWARE = [
@@ -132,7 +135,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# Base Directory for Static files
+STATICFILES_BASE_DIR = BASE_DIR/"staticfiles"
+STATICFILES_VENDOR_DIR = STATICFILES_BASE_DIR/"vendors"
 
+# Source for python manage.py collectstatic
+STATICFILES_DIRS = [
+    STATICFILES_BASE_DIR
+]
+
+# OUTPUT for python manage.py collectstatic
+# for Short term we will be using localCDN --> Then movig into Production CDN
+
+STATIC_ROOT = BASE_DIR.parent / "local-cdn"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
