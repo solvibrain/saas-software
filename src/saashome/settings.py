@@ -83,14 +83,14 @@ WSGI_APPLICATION = 'saashome.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 CONN_MAX_AGE = config("CONN_MAX_AGE",cast = int , default = 30)
-DATABASE_URL = config("DATABASE_URL", cast = str)
+DATABASE_URL = config("DATABASE_URL", default = None)
 
 if DATABASE_URL is not None:
     import dj_database_url
@@ -137,6 +137,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 # Base Directory for Static files
 STATICFILES_BASE_DIR = BASE_DIR/"staticfiles"
+# After running python manage.py vendor_pull, warning The directory 'C:\Users\Dell\OneDrive\Desktop\Playstation\New Journey\Full_SAAS Project using Django\src\staticfiles' in the STATICFILES_DIRS setting does not exist.
+STATICFILES_BASE_DIR.mkdir(exist_ok=True, parents = True)
 STATICFILES_VENDOR_DIR = STATICFILES_BASE_DIR/"vendors"
 
 # Source for python manage.py collectstatic

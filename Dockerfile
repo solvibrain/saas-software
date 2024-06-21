@@ -42,11 +42,23 @@ COPY ./src /code
 
 # Install the Python project requirements
 RUN pip install -r /tmp/requirements.txt
+# Inlcludign Environment Vaiables in Docker File
+ARG DJANGO_SECRET_KEY
+ENV DJANGO_SECRET_KEY = ${DJANGO_SECRET_KEY}
 
+ARG DJANGO_DEBUG=0
+ENV DJANGO_DEBUG = ${DJANGO_DEBUG}
+
+ARG DATABASE_URL
+ENV DATABASE_URL = ${DATABASE_URL}
 # database isn't available during build
 # run any other commands that do not need the database
 # such as:
-# RUN python manage.py collectstatic --noinput
+RUN python manage.py vendor_pull    
+RUN python manage.py collectstatic --noinput
+# Till now we have done automatic download and Collected those static files using command
+# Whitenoise is better for MVP but as the user will start to grow we should use S3 Buket like things to serve Static files
+
 # Here this Command will run and this wil push static file to the Destination Path
 # But befor to this We will Pull STatic file to Local and then aboe command will get Execute and for this we will make our own Custom Django Management Command.
 
