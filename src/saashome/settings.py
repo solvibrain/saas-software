@@ -137,6 +137,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 # Base Directory for Static files
 STATICFILES_BASE_DIR = BASE_DIR/"staticfiles"
+# After running python manage.py vendor_pull, warning The directory 'C:\Users\Dell\OneDrive\Desktop\Playstation\New Journey\Full_SAAS Project using Django\src\staticfiles' in the STATICFILES_DIRS setting does not exist.
+STATICFILES_BASE_DIR.mkdir(exist_ok=True, parents = True)
 STATICFILES_VENDOR_DIR = STATICFILES_BASE_DIR/"vendors"
 
 # Source for python manage.py collectstatic
