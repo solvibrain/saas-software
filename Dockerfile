@@ -54,7 +54,7 @@ ENV DJANGO_DEBUG = ${DJANGO_DEBUG}
 # run any other commands that do not need the database
 # such as:
 # RUN python manage.py vendor_pull  --noinput  
-RUN python manage.py collectstatic --noinput
+# RUN python manage.py collectstatic --noinput
 # Till now we have done automatic download and Collected those static files using command
 # Whitenoise is better for MVP but as the user will start to grow we should use S3 Buket like things to serve Static files
 
