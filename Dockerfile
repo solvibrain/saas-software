@@ -46,15 +46,14 @@ RUN pip install -r /tmp/requirements.txt
 ARG DJANGO_SECRET_KEY
 ENV DJANGO_SECRET_KEY = ${DJANGO_SECRET_KEY}
 
-ARG DJANGO_DEBUG
+ARG DJANGO_DEBUG=0
 ENV DJANGO_DEBUG = ${DJANGO_DEBUG}
 
-ARG DATABASE_URL
-ENV DATABASE_URL = ${DATABASE_URL}
+
 # database isn't available during build
 # run any other commands that do not need the database
 # such as:
-RUN python manage.py vendor_pull    
+RUN python manage.py vendor_pull  --noinput  
 RUN python manage.py collectstatic --noinput
 # Till now we have done automatic download and Collected those static files using command
 # Whitenoise is better for MVP but as the user will start to grow we should use S3 Buket like things to serve Static files
