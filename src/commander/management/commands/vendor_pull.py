@@ -1,4 +1,4 @@
-from django.core.management.base import BaseCommand # this is the basic import that we need to do in all Custom comamnd files
+from django.core.management.base import BaseCommand # this is the basic import that we need to do in all Custom command files
 from typing import Any  
 from django.conf import settings  # This import is for usnig setting Configuration in this file 
 import helper # this is Our own built package , that we are using to invoke functions that is written in helper package
@@ -8,6 +8,7 @@ STATICFILES_VENDOR_DIR = getattr(settings,"STATICFILES_VENDOR_DIR")
 VENDOR_STATICFILES = {
     'flowbite.min.css':"https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css",
     "flowbite.min.js" : "https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js",
+    "flowbite.min.js.map" : "https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js.map"
 }
 
 class Command(BaseCommand):
